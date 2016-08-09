@@ -1,5 +1,10 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.0-beta-*",
+  "authors": ["Devon Burriss"],
+  "packOptions": {
+    "licenseUrl": "https://github.com/dburriss/serilog-sinks-redis/blob/master/LICENSE",
+    "projectUrl": "https://github.com/dburriss/serilog-sinks-redis"
+  },
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
