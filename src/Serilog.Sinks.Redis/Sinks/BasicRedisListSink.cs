@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
 using Serilog.Events;
-using Serilog.Formatting;
-using Serilog.Formatting.Json;
 using StackExchange.Redis;
 
 namespace Serilog.Sinks.Redis.Sinks
@@ -19,9 +15,9 @@ namespace Serilog.Sinks.Redis.Sinks
         private readonly IConnectionMultiplexer _redis;
 
         private readonly string _keyName;
-        private ITextFormatter _formatter;
+        private readonly IFormatProvider _formatter;
 
-        public BasicRedisListSink(IConnectionMultiplexer redis, string keyName, TimeSpan period, int batchSizeLimit = DefaultBatchPostingLimit, ITextFormatter formatter = null) : base(batchSizeLimit, period)
+        public BasicRedisListSink(IConnectionMultiplexer redis, string keyName, TimeSpan period, int batchSizeLimit = DefaultBatchPostingLimit, IFormatProvider formatter = null) : base(batchSizeLimit, period)
         {
             if (redis == null)
                 throw new ArgumentNullException(nameof(redis));
@@ -29,11 +25,9 @@ namespace Serilog.Sinks.Redis.Sinks
             if (string.IsNullOrEmpty(keyName))
                 throw new ArgumentNullException(nameof(keyName));
 
-            if (formatter == null)
-                _formatter = new JsonFormatter();
-
             _redis = redis;
             _keyName = keyName;
+            _formatter = formatter;
         }
 
         protected override void Dispose(bool disposing)
@@ -61,8 +55,7 @@ namespace Serilog.Sinks.Redis.Sinks
         private RedisValue[] TransformLogValues(IEnumerable<LogEvent> events)
         {
             return events
-                .Select(JsonConvert.SerializeObject)
-                .Select(v => (RedisValue) v)
+                .Select(ev => (RedisValue) JsonConvert.SerializeObject(new RedisLogEvent(ev, ev.RenderMessage(_formatter))))
                 .ToArray();
         }
     }

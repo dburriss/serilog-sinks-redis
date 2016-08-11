@@ -1,0 +1,15 @@
+﻿{
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "Serilog": "2.1.0",
+    "Serilog.Sinks.Redis": "1.0.0-beta-*"
+  },
+
+  "frameworks": {
+    "net451": {}
+  }
+}

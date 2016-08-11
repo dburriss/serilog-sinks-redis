@@ -13,7 +13,7 @@ namespace Serilog.Sinks.Redis.IntegrationTests
 {
     public class BasicRedisListSinkTests
     {
-        const string key = "testKey";
+        const string key = "ConsoleWithLogging";
         [Fact]
         public void VerifyUp()
         {
@@ -82,7 +82,7 @@ namespace Serilog.Sinks.Redis.IntegrationTests
 
         private static LogEvent CreateLogItem()
         {
-            return new LogEvent(DateTimeOffset.MinValue,
+            return new LogEvent(DateTimeOffset.UtcNow,
                 LogEventLevel.Information,
                 new Exception("TEST"),
                 new MessageTemplate("This is a test on {Date}", new List<MessageTemplateToken>() { new TextToken("Date") }),
@@ -103,7 +103,7 @@ namespace Serilog.Sinks.Redis.IntegrationTests
 
         private static ConnectionMultiplexer Connect()
         {
-            return ConnectionMultiplexer.Connect("127.0.0.1:6379");
+            return ConnectionMultiplexer.Connect("localhost:6379");
         }
 
         public BasicRedisListSinkTests()
