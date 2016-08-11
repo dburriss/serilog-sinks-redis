@@ -10,7 +10,7 @@ namespace ConsoleWithLogging
         public static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-            .WriteTo.Redis("localhost:6379", "ConsoleWithLogging")
+            .WriteTo.Redis($"{args[0]}:{args[1]}", "ConsoleWithLogging")
             .CreateLogger();
 
             var now = DateTime.UtcNow;
@@ -25,12 +25,19 @@ namespace ConsoleWithLogging
         {
             Console.WriteLine("Log something:");
             var input = Console.ReadLine();
-
+            var processed = false;
             if (input == "q")
+            {
                 Quit();
+                processed = true;
+            }
+
 
             if (input == "v")
+            {
                 Version();
+            }
+                
 
             var now = DateTime.UtcNow;
             Log.Information("At {@now} : {@input}",now, input);
