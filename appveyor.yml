@@ -16,7 +16,7 @@ deploy:
 - provider: NuGet
   server: https://www.myget.org/F/dburriss-ci/api/v2/package
   api_key:
-    secure: lyyiBvn6TJr0kN0WCgou8bYVU+J5ymVbM9x4xvv05LDxWCLbJ92Sm4LIk1j3WSh3
+    secure: Rx7T4w1rjWYdQyNk7wKBOjylk11kMKhd8QfVnjbLdTNr+HJwDIDegUzqb5AXNWmr
   skip_symbols: true
   on:
     branch: master

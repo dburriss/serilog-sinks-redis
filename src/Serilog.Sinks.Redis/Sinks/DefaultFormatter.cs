@@ -4,7 +4,7 @@ using Serilog.Events;
 
 namespace Serilog.Sinks.Redis.Sinks
 {
-    public class DefaultJsonFormatter : IFormatProvider, ICustomFormatter
+    public class DefaultFormatter : IFormatProvider, ICustomFormatter
     {
         public object GetFormat(Type formatType)
         {
