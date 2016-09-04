@@ -3,6 +3,7 @@ pull_requests:
   do_not_increment_build_number: true
 branches:  
   only:
+  - dev
   - master
 nuget:  
   disable_publish_on_pr: true
@@ -14,6 +15,7 @@ artifacts:
   name: NuGet
 deploy:  
 - provider: NuGet
+  name: bleeding
   server: https://www.myget.org/F/dburriss-ci/api/v2/package
   api_key:
     secure: 'Rx7T4w1rjWYdQyNk7wKBOjylk11kMKhd8QfVnjbLdTNr+HJwDIDegUzqb5AXNWmr'

@@ -1,3 +1,6 @@
+$nugetProjects = @(".\src\Serilog.Sinks.Redis.Core", ".\src\Serilog.Sinks.Redis.List")
+$testProjects = @(".\test\Serilog.Sinks.Redis.Tests", ".\test\Serilog.Sinks.Redis.IntegrationTests")
+
 function EnsurePsbuildInstalled{  
     [cmdletbinding()]
     param(
@@ -35,15 +38,33 @@ function Exec
 if(Test-Path .\artifacts) { Remove-Item .\artifacts -Force -Recurse }
 
 EnsurePsbuildInstalled
+Write-Host "=================================================" -ForegroundColor Green
+Write-Host "  RESTORE" -ForegroundColor Green
+Write-Host "=================================================" -ForegroundColor Green
+Exec { & dotnet restore }
 
-exec { & dotnet restore }
-
+Write-Host "=================================================" -ForegroundColor Green
+Write-Host " BUILDING" -ForegroundColor Green
+Write-Host "=================================================" -ForegroundColor Green
 Invoke-MSBuild
 
 $revision = @{ $true = $env:APPVEYOR_BUILD_NUMBER; $false = 1 }[$env:APPVEYOR_BUILD_NUMBER -ne $NULL];
 $revision = "{0:D4}" -f [convert]::ToInt32($revision, 10)
 
-#exec { & dotnet test .\test\Extension.Tests -c Release }
-#exec { & dotnet test .\test\Extension.Tests -c Release }
+foreach ($testProjectPath in $testProjects) {
+	Write-Host "=================================================" -ForegroundColor Green
+    Write-Host " TESTING " $testProjectPath -ForegroundColor Green
+	Write-Host "=================================================" -ForegroundColor Green
+    Exec { & dotnet test $testProjectPath -c Release -notrait "Category=Integration" }#can add dotnet test -notrait "Category=Integration" to skip tests marked [Trait("Category", "Integration")]
+}
 
-exec { & dotnet pack .\src\Serilog.Sinks.Redis -c Release -o .\artifacts --version-suffix=$revision } 
+foreach ($projectPath in $nugetProjects) {
+	Write-Host "=================================================" -ForegroundColor Green
+    Write-Host " PACKAGING " $projectPath -ForegroundColor Green
+	Write-Host "=================================================" -ForegroundColor Green
+    Exec { & dotnet pack $projectPath -c Release -o .\artifacts --version-suffix=$revision } 
+}
+
+Write-Host "=================================================" -ForegroundColor Green
+Write-Host "====================== DONE =====================" -ForegroundColor Green
+Write-Host "=================================================" -ForegroundColor Green

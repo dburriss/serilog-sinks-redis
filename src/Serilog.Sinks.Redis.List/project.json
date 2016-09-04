@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-beta-0",
+  "version": "1.0.0-alpha1",
   "authors": ["Devon Burriss"],
   "packOptions": {
     "licenseUrl": "https://github.com/dburriss/serilog-sinks-redis/blob/master/LICENSE",
@@ -8,8 +8,9 @@
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
-    "Newtonsoft.Json": "9.0.1",
+    "Serilog.Formatting.Compact": "1.0.0",
     "Serilog.Sinks.PeriodicBatching": "2.0.0",
+    "Serilog.Sinks.Redis.Core": "1.0.0",
     "StackExchange.Redis": "1.1.603"
   },
 
