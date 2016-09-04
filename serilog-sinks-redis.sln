@@ -20,11 +20,11 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Serilog.Sinks.Redis.Integra
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{73A27D96-6EE3-4A98-8B13-3E08E7C1C564}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ConsoleWithLogging", "ConsoleWithLogging\ConsoleWithLogging.xproj", "{BA48643B-DD2E-4780-9AE4-63BB592F8DC1}"
-EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Serilog.Sinks.Redis.Core", "src\Serilog.Sinks.Redis.Core\Serilog.Sinks.Redis.Core.xproj", "{356A7AF1-3512-472A-AC21-550293121ADF}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Serilog.Sinks.Redis.List", "src\Serilog.Sinks.Redis.List\Serilog.Sinks.Redis.List.xproj", "{13D39C61-B8D6-49A5-AF1A-0304897EB243}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ConsoleWithLogging", "examples\ConsoleWithLogging\ConsoleWithLogging.xproj", "{BA48643B-DD2E-4780-9AE4-63BB592F8DC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,10 +40,6 @@ Global
 		{BC890742-9418-42ED-AA0B-8E0B1932F5E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC890742-9418-42ED-AA0B-8E0B1932F5E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC890742-9418-42ED-AA0B-8E0B1932F5E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BA48643B-DD2E-4780-9AE4-63BB592F8DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA48643B-DD2E-4780-9AE4-63BB592F8DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA48643B-DD2E-4780-9AE4-63BB592F8DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA48643B-DD2E-4780-9AE4-63BB592F8DC1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{356A7AF1-3512-472A-AC21-550293121ADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{356A7AF1-3512-472A-AC21-550293121ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{356A7AF1-3512-472A-AC21-550293121ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -52,6 +48,10 @@ Global
 		{13D39C61-B8D6-49A5-AF1A-0304897EB243}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13D39C61-B8D6-49A5-AF1A-0304897EB243}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13D39C61-B8D6-49A5-AF1A-0304897EB243}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA48643B-DD2E-4780-9AE4-63BB592F8DC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA48643B-DD2E-4780-9AE4-63BB592F8DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA48643B-DD2E-4780-9AE4-63BB592F8DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA48643B-DD2E-4780-9AE4-63BB592F8DC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,8 +59,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C4F02A3E-4DF6-4B43-9949-58C65A3193F4} = {4BF12526-CC8C-4C7C-ABD1-663EA8B164DF}
 		{BC890742-9418-42ED-AA0B-8E0B1932F5E3} = {4BF12526-CC8C-4C7C-ABD1-663EA8B164DF}
-		{BA48643B-DD2E-4780-9AE4-63BB592F8DC1} = {73A27D96-6EE3-4A98-8B13-3E08E7C1C564}
 		{356A7AF1-3512-472A-AC21-550293121ADF} = {899E970E-6FDA-4B5E-942F-33B1FCCF5DD5}
 		{13D39C61-B8D6-49A5-AF1A-0304897EB243} = {899E970E-6FDA-4B5E-942F-33B1FCCF5DD5}
+		{BA48643B-DD2E-4780-9AE4-63BB592F8DC1} = {73A27D96-6EE3-4A98-8B13-3E08E7C1C564}
 	EndGlobalSection
 EndGlobal
