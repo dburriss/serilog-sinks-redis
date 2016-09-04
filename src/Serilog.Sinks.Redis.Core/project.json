@@ -1,0 +1,20 @@
+﻿{
+  "version": "1.0.0",
+  "authors": [ "Devon Burriss" ],
+  "packOptions": {
+    "licenseUrl": "https://github.com/dburriss/serilog-sinks-redis/blob/master/LICENSE",
+    "projectUrl": "https://github.com/dburriss/serilog-sinks-redis",
+    "iconUrl": "http://serilog.net/images/serilog-sink-nuget.png"
+  },
+
+  "dependencies": {
+    "NETStandard.Library": "1.6.0",
+    "Serilog.Formatting.Compact": "1.0.0",
+    "Serilog.Sinks.PeriodicBatching": "2.0.0",
+    "StackExchange.Redis": "1.1.603"
+  },
+
+  "frameworks": {
+    "net451": {}
+  }
+}

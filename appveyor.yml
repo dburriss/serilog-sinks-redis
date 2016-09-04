@@ -14,6 +14,7 @@ artifacts:
   name: NuGet
 deploy:  
 - provider: NuGet
+  name: bleeding
   server: https://www.myget.org/F/dburriss-ci/api/v2/package
   api_key:
     secure: 'Rx7T4w1rjWYdQyNk7wKBOjylk11kMKhd8QfVnjbLdTNr+HJwDIDegUzqb5AXNWmr'

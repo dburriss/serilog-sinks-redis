@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "ConsoleWithLogging": {
-      "commandName": "Project",
-      "commandLineArgs": "10.0.118.62 6379"
-    }
-  }
-}

@@ -1,48 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using FakeItEasy;
+using System.Threading;
 using Serilog.Events;
 using Serilog.Parsing;
-using Serilog.Sinks.Redis.Sinks;
-using StackExchange.Redis;
+using Serilog.Sinks.Redis.Core;
+using Telerik.JustMock;
 using Xunit;
 
 namespace Serilog.Sinks.Redis.Tests
 {
-    public class BasicRedisListSinkTests
+    public class RedisListLPushSinkTests
     {
-        private const string key = "testKey";
-
-        [Fact(Skip = "fake?")]
-        public void Emit_KnownEvent_SendsEventToDatabase()
+        [Fact]
+        public void Emit_LessThanBatchLimitOfEvents_DoesNotEmitBatch()
         {
-            var connection = A.Fake<IConnectionMultiplexer>();
-            var db = A.Fake<IDatabase>();
-            A.CallTo(() => connection.GetDatabase(A<int>.Ignored, A<object>.Ignored)).Returns(db);
-            var sut = new BasicRedisListSink(connection, key, TimeSpan.FromMilliseconds(1));
+            var batchLimit = 50;
+            var client = Mock.Create<IRedisClient>();
 
-            sut.Emit(CreateLogItem());
-
-            A.CallTo(() => db.ListLeftPush(A<string>.That.Matches(x => x == key), A<RedisValue>.Ignored, A<When>.Ignored, A<CommandFlags>.Ignored))
-                .MustHaveHappened(Repeated.AtLeast.Once);
+            var period = TimeSpan.FromSeconds(10);
+            var sut = new TestableRedisListSink(client, period, batchLimit);
+            var ev = CreateLogItem();
+            sut.Emit(ev);
+            Assert.False(sut.CalledEmit);
         }
 
-        [Fact(Skip = "fake?")]
-        public void Emit_KnownEvent_SendsJsonToDatabase()
+        [Fact]
+        public void Emit_BatchLimitOfEvents_EmitsBatch()
         {
-            var connection = A.Fake<IConnectionMultiplexer>();
-            var db = A.Fake<IDatabase>();
-            string result = "";
-            A.CallTo(() => connection.GetDatabase(A<int>.Ignored, A<object>.Ignored)).Returns(db);
-            A.CallTo(() => db.ListLeftPush(key, A<RedisValue>.Ignored, A<When>.Ignored, A<CommandFlags>.Ignored))
-                .Invokes(f => result = f.GetArgument<string>(1));
+            var batchLimit = 50;
+            var client = Mock.Create<IRedisClient>();
 
-            var sut = new BasicRedisListSink(connection, key, TimeSpan.FromMilliseconds(1));
-            sut.Emit(CreateLogItem());
-
-            Assert.NotEmpty(result);
+            var period = TimeSpan.FromSeconds(10);
+            var sut = new TestableRedisListSink(client, period, batchLimit);
+            var ev = CreateLogItem();
+            for (var i = 0; i <= batchLimit; i++)
+            {
+                sut.Emit(ev);
+            }
+            SpinWait.SpinUntil(() => sut.CalledEmit, TimeSpan.FromSeconds(5));
+            Assert.True(sut.CalledEmit);
         }
+        
 
         private static LogEvent CreateLogItem()
         {

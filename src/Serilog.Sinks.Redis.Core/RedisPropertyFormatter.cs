@@ -4,7 +4,7 @@ using System.Linq;
 using Serilog.Debugging;
 using Serilog.Events;
 
-namespace Serilog.Sinks.Redis.Sinks
+namespace Serilog.Sinks.Redis.Core
 {
     public static class RedisSpecialScalarsPropertyFormatter
     {
