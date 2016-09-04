@@ -1,20 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting;
 using System.Threading;
 using Serilog.Events;
+using Serilog.Formatting.Compact;
 using Serilog.Parsing;
-using Serilog.Sinks.Redis.Sinks;
+using Serilog.Sinks.Redis.Core;
+using Serilog.Sinks.Redis.List;
 using StackExchange.Redis;
 using Xunit;
 
 namespace Serilog.Sinks.Redis.IntegrationTests
 {
-    public class BasicRedisListSinkTests
+    public class RedisListLPushSinkTests
     {
         const string key = "ConsoleWithLogging";
+
+        public RedisListLPushSinkTests()
+        {
+            var db = GetDb();
+            db.KeyDelete(key);
+        }
+
         [Fact]
+        [Trait("Category", "Integration")]
         public void VerifyUp()
         {
             IConnectionMultiplexer redis = Connect();
@@ -22,6 +31,7 @@ namespace Serilog.Sinks.Redis.IntegrationTests
         }
 
         [Fact]
+        [Trait("Category", "Integration")]
         public void VerifyDb()
         {
             IDatabase db = GetDb();
@@ -29,13 +39,14 @@ namespace Serilog.Sinks.Redis.IntegrationTests
         }
 
         [Fact]
+        [Trait("Category", "Integration")]
         public void Emit_ValidLogEvents_SendsEventToServer()
         {
             
             var db = GetDb();
             var ev = CreateLogItem();
 
-            var sut = new BasicRedisListSink(Connect(), key, TimeSpan.FromMilliseconds(1));
+            var sut = new RedisListLPushSink(Client(), TimeSpan.FromMilliseconds(1));
 
             sut.Emit(ev);
             WaitForBatchToComplete();
@@ -45,13 +56,14 @@ namespace Serilog.Sinks.Redis.IntegrationTests
         }
 
         [Fact]
+        [Trait("Category", "Integration")]
         public void Emit_ValidLogEvents_ContainsEvent()
         {
 
             var db = GetDb();
             var ev = CreateLogItem();
 
-            var sut = new BasicRedisListSink(Connect(), key, TimeSpan.FromMilliseconds(1));
+            var sut = new RedisListLPushSink(Client(), TimeSpan.FromMilliseconds(1));
 
             sut.Emit(ev);
             WaitForBatchToComplete();
@@ -62,11 +74,12 @@ namespace Serilog.Sinks.Redis.IntegrationTests
         }
 
         [Fact]
+        [Trait("Category", "Integration")]
         public void Emit_100ValidEvents_ContainsEvent()
         {
 
             var db = GetDb();
-            var sut = new BasicRedisListSink(Connect(), key, TimeSpan.FromMilliseconds(1));
+            var sut = new RedisListLPushSink(Client(), TimeSpan.FromMilliseconds(1));
             Enumerable.Range(0, 100).ToList().ForEach(i =>
             {
                 var ev = CreateLogItem();
@@ -106,10 +119,10 @@ namespace Serilog.Sinks.Redis.IntegrationTests
             return ConnectionMultiplexer.Connect("localhost:6379");
         }
 
-        public BasicRedisListSinkTests()
+        private static IRedisClient Client()
         {
-            var db = GetDb();
-            db.KeyDelete(key);
+            return new RedisListLPushClient(Connect(), key, new CompactJsonFormatter());
         }
+
     }
 }
