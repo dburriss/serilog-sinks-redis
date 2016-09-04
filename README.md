@@ -1,9 +1,18 @@
 # serilog-sinks-redis
+
 I am a Serilog sink for Redis List
 
 | DEV |MASTER|BLEEDING|NUGET|
 |-----|------|--------|-----|
 |[![CI status][1]][2]|[![Release Build status][3]][4]|[![MyGet CI][5]][6]|[![NuGet CI][7]][8]|
+
+## Usage
+
+```csharp
+Log.Logger = new LoggerConfiguration()
+            .WriteTo.RedisList("localhost:6379", "MyConsoleApp")
+            .CreateLogger();
+```
 
 [1]: https://ci.appveyor.com/api/projects/status/pmgou6qm452s50d0?svg=true
 [2]: https://ci.appveyor.com/project/dburriss/serilog-sinks-redis

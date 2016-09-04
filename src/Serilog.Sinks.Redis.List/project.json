@@ -3,7 +3,8 @@
   "authors": ["Devon Burriss"],
   "packOptions": {
     "licenseUrl": "https://github.com/dburriss/serilog-sinks-redis/blob/master/LICENSE",
-    "projectUrl": "https://github.com/dburriss/serilog-sinks-redis"
+    "projectUrl": "https://github.com/dburriss/serilog-sinks-redis",
+    "iconUrl": "http://serilog.net/images/serilog-sink-nuget.png"
   },
 
   "dependencies": {
