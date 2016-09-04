@@ -8,6 +8,8 @@ I am a Serilog sink for Redis List
 
 ## Usage
 
+> Install-Package Serilog.Sinks.Redis.List
+
 ```csharp
 Log.Logger = new LoggerConfiguration()
             .WriteTo.RedisList("localhost:6379", "MyConsoleApp")
