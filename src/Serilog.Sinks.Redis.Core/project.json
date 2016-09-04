@@ -1,10 +1,12 @@
 ﻿{
   "version": "1.0.0",
   "authors": [ "Devon Burriss" ],
+  "description": "Core functionality shared across Serilog Redis sinks",
   "packOptions": {
     "licenseUrl": "https://github.com/dburriss/serilog-sinks-redis/blob/master/LICENSE",
     "projectUrl": "https://github.com/dburriss/serilog-sinks-redis",
-    "iconUrl": "http://serilog.net/images/serilog-sink-nuget.png"
+    "iconUrl": "http://serilog.net/images/serilog-sink-nuget.png",
+    "tags": [ "logging", "serilog", "sink", "redis" ]
   },
 
   "dependencies": {

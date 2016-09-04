@@ -1,10 +1,13 @@
 {
   "version": "1.0.0",
-  "authors": ["Devon Burriss"],
+  "authors": [ "Devon Burriss" ],
+  "title": "Serilog Redis List Sinks",
+  "description": "Serilog Redis sinks that logs to a Redis List type",
   "packOptions": {
     "licenseUrl": "https://github.com/dburriss/serilog-sinks-redis/blob/master/LICENSE",
     "projectUrl": "https://github.com/dburriss/serilog-sinks-redis",
-    "iconUrl": "http://serilog.net/images/serilog-sink-nuget.png"
+    "iconUrl": "http://serilog.net/images/serilog-sink-nuget.png",
+    "tags": [ "logging", "serilog", "sink", "redis", "list", "structured" ]
   },
 
   "dependencies": {
