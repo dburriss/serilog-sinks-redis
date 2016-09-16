@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [ "Devon Burriss" ],
   "description": "Core functionality shared across Serilog Redis sinks",
   "packOptions": {
@@ -17,6 +17,8 @@
   },
 
   "frameworks": {
-    "net451": {}
+    "net451": {},
+    "net46": {},
+    "net461": {}
   }
 }
