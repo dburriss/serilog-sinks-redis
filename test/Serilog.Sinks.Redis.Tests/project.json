@@ -3,7 +3,7 @@
   "testRunner": "xunit",
   "dependencies": {
     "xunit": "2.2.0-beta2-build3300",
-    "Serilog.Sinks.Redis.List": "1.0.1",
+    "Serilog.Sinks.Redis.List": "1.1.0",
     "Serilog": "2.1.0",
     "JustMock": "2016.2.426.1",
     "dotnet-test-xunit": "2.2.0-preview2-build1029"

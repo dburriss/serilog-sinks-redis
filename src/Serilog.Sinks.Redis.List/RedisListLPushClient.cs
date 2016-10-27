@@ -11,21 +11,24 @@ namespace Serilog.Sinks.Redis.List
 {
     public class RedisListLPushClient : IRedisClient
     {
-        protected readonly IConnectionMultiplexer _redis;
-        protected readonly string _keyName;
-        protected readonly ITextFormatter _formatter;
+        protected readonly IConnectionMultiplexer Redis;
+        protected readonly string KeyName;
+        protected readonly ITextFormatter Formatter;
 
         public RedisListLPushClient(IConnectionMultiplexer redis, string keyName, ITextFormatter defaultFormatter)
         {
-            _redis = redis;
-            _keyName = keyName;
-            _formatter = defaultFormatter;
+            Redis = redis;
+            KeyName = keyName;
+            Formatter = defaultFormatter;
         }
 
         public virtual void Send(IEnumerable<LogEvent> events)
         {
-            var db = _redis.GetDatabase();
-            db.ListLeftPush(_keyName, TransformLogValues(events).ToArray<RedisValue>());
+            if (Redis.IsConnected)
+            {
+                var db = Redis.GetDatabase();
+                db.ListLeftPush(KeyName, TransformLogValues(events).ToArray<RedisValue>());
+            }
         }
 
         protected virtual IEnumerable<RedisValue> TransformLogValues(IEnumerable<LogEvent> events)
@@ -34,7 +37,7 @@ namespace Serilog.Sinks.Redis.List
             {
                 using (var sw = new StringWriter())
                 {
-                    _formatter.Format(logEvent, sw);
+                    Formatter.Format(logEvent, sw);
                     yield return sw.ToString();
                 }
             }
@@ -52,7 +55,7 @@ namespace Serilog.Sinks.Redis.List
                 return;
 
             if (disposing)
-                _redis.Dispose();
+                Redis.Dispose();
 
             _disposed = true;
         }
