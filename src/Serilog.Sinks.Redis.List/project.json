@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.3.0",
   "authors": [ "Devon Burriss" ],
   "title": "Serilog Redis List Sinks",
   "description": "Serilog Redis sinks that logs to a Redis List type",
@@ -13,13 +13,21 @@
   "dependencies": {
     "Serilog.Formatting.Compact": "1.0.*",
     "Serilog.Sinks.PeriodicBatching": "2.0.*",
-    "Serilog.Sinks.Redis.Core": "1.0.*",
-    "StackExchange.Redis": "1.1.603"
+    "Serilog.Sinks.Redis.Core": "1.*",
+    "StackExchange.Redis": "1.1.*"
   },
 
   "frameworks": {
     "net451": {},
     "net46": {},
-    "net461": {}
+    "net461": {},
+    "netstandard1.5": {
+      "imports": "dnxcore50",
+      "buildOptions": {
+        "define": [
+          "COREFX"
+        ]
+      }
+    }
   }
 }
