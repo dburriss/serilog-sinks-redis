@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.0.2",
+  "version": "1.1.0",
   "authors": [ "Devon Burriss" ],
   "description": "Core functionality shared across Serilog Redis sinks",
   "packOptions": {
@@ -10,14 +10,22 @@
   },
 
   "dependencies": {
-    "Serilog.Formatting.Compact": "1.0.0",
-    "Serilog.Sinks.PeriodicBatching": "2.0.0",
-    "StackExchange.Redis": "1.1.603"
+    "Serilog.Formatting.Compact": "1.0.*",
+    "Serilog.Sinks.PeriodicBatching": "2.0.*",
+    "StackExchange.Redis": "1.1.*"
   },
 
   "frameworks": {
     "net451": {},
     "net46": {},
-    "net461": {}
+    "net461": {},
+    "netstandard1.5": {
+      "imports": "dnxcore50",
+      "buildOptions": {
+        "define": [
+          "COREFX"
+        ]
+      }
+    }
   }
 }
