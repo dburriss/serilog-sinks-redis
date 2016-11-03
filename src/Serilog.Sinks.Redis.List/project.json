@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.3.1",
   "authors": [ "Devon Burriss" ],
   "title": "Serilog Redis List Sinks",
   "description": "Serilog Redis sinks that logs to a Redis List type",
