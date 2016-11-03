@@ -12,10 +12,11 @@ namespace Serilog.Sinks.Redis.List
     {
         public const int DefaultBatchPostingLimit = 50;
         public static readonly TimeSpan DefaultPeriod = TimeSpan.FromSeconds(2);
-        
+
         private readonly IRedisClient _redisListClient;
 
-        public RedisListLPushSink(IRedisClient client, TimeSpan period, int batchSizeLimit = DefaultBatchPostingLimit) : base(batchSizeLimit, period)
+        public RedisListLPushSink(IRedisClient client, TimeSpan period, int batchSizeLimit = DefaultBatchPostingLimit)
+            : base(batchSizeLimit, period)
         {
             if (client == null)
                 throw new ArgumentNullException(nameof(client));

@@ -1,17 +1,14 @@
 ﻿using System;
-using System.IO;
-using System.Text;
 using Serilog.Configuration;
-using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Formatting.Compact;
-using Serilog.Formatting.Json;
 using StackExchange.Redis;
 
 namespace Serilog.Sinks.Redis.List
 {
     public static class RedisLoggerConfigurationExt
     {
+        private static bool _abortOnConnectFail = false;
         public static LoggerConfiguration RedisList(this LoggerSinkConfiguration loggerSinkConfiguration,
             string redisUris, string keyName,
             TimeSpan? period = null, int batchSizeLimit = RedisListLPushSink.DefaultBatchPostingLimit,
@@ -32,7 +29,11 @@ namespace Serilog.Sinks.Redis.List
         {
             try
             {
-                return ConnectionMultiplexer.Connect(redisUris);
+                var config = ConfigurationOptions.Parse(redisUris);
+                config.AbortOnConnectFail = _abortOnConnectFail;
+                var multiplexer = ConnectionMultiplexer.Connect(config);
+
+                return multiplexer;
             }
             catch (Exception)
             {
@@ -40,7 +41,6 @@ namespace Serilog.Sinks.Redis.List
             }
             
         }
-
 
         //public static LoggerConfiguration RedisRollingList(this LoggerSinkConfiguration loggerSinkConfiguration, string redisUris, string keyFormat,
         //    TimeSpan? period = null, int batchSizeLimit = RedisListLPushSink.DefaultBatchPostingLimit, ITextFormatter formatter = null)
