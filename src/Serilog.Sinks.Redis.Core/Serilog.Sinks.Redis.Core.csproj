@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Core functionality shared across Serilog Redis sinks</Description>
+    <VersionPrefix>1.1.0</VersionPrefix>
+    <Authors>Devon Burriss</Authors>
+    <TargetFrameworks>net451;net46;net461;netstandard1.5</TargetFrameworks>
+    <AssemblyName>Serilog.Sinks.Redis.Core</AssemblyName>
+    <PackageId>Serilog.Sinks.Redis.Core</PackageId>
+    <PackageTags>logging;serilog;sink;redis</PackageTags>
+    <PackageIconUrl>http://serilog.net/images/serilog-sink-nuget.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/dburriss/serilog-sinks-redis</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/dburriss/serilog-sinks-redis/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.5' ">$(PackageTargetFallback);dnxcore50</PackageTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog.Formatting.Compact" Version="1.0.*" />
+    <PackageReference Include="Serilog.Sinks.PeriodicBatching" Version="2.0.*" />
+    <PackageReference Include="StackExchange.Redis" Version="1.1.*" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net451' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.5' ">
+    <DefineConstants>$(DefineConstants);COREFX</DefineConstants>
+  </PropertyGroup>
+
+</Project>

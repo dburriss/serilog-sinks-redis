@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{899E970E-6FDA-4B5E-942F-33B1FCCF5DD5}"
 EndProject
@@ -14,19 +14,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{4BF12526-CC8C-4C7C-ABD1-663EA8B164DF}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Serilog.Sinks.Redis.Tests", "test\Serilog.Sinks.Redis.Tests\Serilog.Sinks.Redis.Tests.xproj", "{C4F02A3E-4DF6-4B43-9949-58C65A3193F4}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Serilog.Sinks.Redis.IntegrationTests", "test\Serilog.Sinks.Redis.IntegrationTests\Serilog.Sinks.Redis.IntegrationTests.xproj", "{BC890742-9418-42ED-AA0B-8E0B1932F5E3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{73A27D96-6EE3-4A98-8B13-3E08E7C1C564}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Serilog.Sinks.Redis.Core", "src\Serilog.Sinks.Redis.Core\Serilog.Sinks.Redis.Core.xproj", "{356A7AF1-3512-472A-AC21-550293121ADF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Sinks.Redis.Tests", "test\Serilog.Sinks.Redis.Tests\Serilog.Sinks.Redis.Tests.csproj", "{C4F02A3E-4DF6-4B43-9949-58C65A3193F4}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Serilog.Sinks.Redis.List", "src\Serilog.Sinks.Redis.List\Serilog.Sinks.Redis.List.xproj", "{13D39C61-B8D6-49A5-AF1A-0304897EB243}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Sinks.Redis.IntegrationTests", "test\Serilog.Sinks.Redis.IntegrationTests\Serilog.Sinks.Redis.IntegrationTests.csproj", "{BC890742-9418-42ED-AA0B-8E0B1932F5E3}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ConsoleWithLogging", "examples\ConsoleWithLogging\ConsoleWithLogging.xproj", "{BA48643B-DD2E-4780-9AE4-63BB592F8DC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Sinks.Redis.Core", "src\Serilog.Sinks.Redis.Core\Serilog.Sinks.Redis.Core.csproj", "{356A7AF1-3512-472A-AC21-550293121ADF}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CoreConsole", "examples\CoreConsole\CoreConsole.xproj", "{8A6A190A-A8B0-4173-8AE2-23DF45BC92B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Sinks.Redis.List", "src\Serilog.Sinks.Redis.List\Serilog.Sinks.Redis.List.csproj", "{13D39C61-B8D6-49A5-AF1A-0304897EB243}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleWithLogging", "examples\ConsoleWithLogging\ConsoleWithLogging.csproj", "{BA48643B-DD2E-4780-9AE4-63BB592F8DC1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreConsole", "examples\CoreConsole\CoreConsole.csproj", "{8A6A190A-A8B0-4173-8AE2-23DF45BC92B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,5 +69,8 @@ Global
 		{13D39C61-B8D6-49A5-AF1A-0304897EB243} = {899E970E-6FDA-4B5E-942F-33B1FCCF5DD5}
 		{BA48643B-DD2E-4780-9AE4-63BB592F8DC1} = {73A27D96-6EE3-4A98-8B13-3E08E7C1C564}
 		{8A6A190A-A8B0-4173-8AE2-23DF45BC92B7} = {73A27D96-6EE3-4A98-8B13-3E08E7C1C564}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B93E6C7A-6613-4715-B537-477CF4AA5B7F}
 	EndGlobalSection
 EndGlobal
