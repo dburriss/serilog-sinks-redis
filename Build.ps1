@@ -1,7 +1,7 @@
 $nugetProjects = @(".\src\Serilog.Sinks.Redis.Core", ".\src\Serilog.Sinks.Redis.List")
 $testProjects = @(".\test\Serilog.Sinks.Redis.Tests", ".\test\Serilog.Sinks.Redis.IntegrationTests")
 
-function EnsurePsbuildInstalled{  
+function EnsurePsbuildInstalled{
     [cmdletbinding()]
     param(
         [string]$psbuildInstallUri = 'https://raw.githubusercontent.com/ligershark/psbuild/master/src/GetPSBuild.ps1'
@@ -22,7 +22,7 @@ function EnsurePsbuildInstalled{
     }
 }
 
-function Exec  
+function Exec
 {
     [CmdletBinding()]
     param(
@@ -55,14 +55,14 @@ foreach ($testProjectPath in $testProjects) {
 	Write-Host "=================================================" -ForegroundColor Green
     Write-Host " TESTING " $testProjectPath -ForegroundColor Green
 	Write-Host "=================================================" -ForegroundColor Green
-    Exec { & dotnet test $testProjectPath -c Release -notrait "Category=Integration" }#can add dotnet test -notrait "Category=Integration" to skip tests marked [Trait("Category", "Integration")]
+    Exec { & dotnet test $testProjectPath -c Release --filter "Category!=Integration" }#can add dotnet test --filter "Category!=Integration" to skip tests marked [Trait("Category", "Integration")]
 }
 
 foreach ($projectPath in $nugetProjects) {
 	Write-Host "=================================================" -ForegroundColor Green
     Write-Host " PACKAGING " $projectPath -ForegroundColor Green
 	Write-Host "=================================================" -ForegroundColor Green
-    Exec { & dotnet pack $projectPath -c Release -o .\artifacts --version-suffix=$revision } 
+    Exec { & dotnet pack $projectPath -c Release -o ../../artifacts --version-suffix=beta-$revision }
 }
 
 Write-Host "=================================================" -ForegroundColor Green
