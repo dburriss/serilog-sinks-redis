@@ -1,8 +1,9 @@
-﻿using System;
+﻿using StackExchange.Redis;
+using StackExchange.Redis.Profiling;
+using System;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
-using StackExchange.Redis;
 
 namespace Serilog.Sinks.Redis.List
 {
@@ -15,9 +16,20 @@ namespace Serilog.Sinks.Redis.List
             _redisUris = redisUris;
         }
 
-        public void RegisterProfiler(IProfiler profiler)
+
+        public void RegisterProfiler(Func<ProfilingSession> profilingSessionProvider)
         {
-            
+
+        }
+
+        public int GetHashSlot(RedisKey key)
+        {
+            return default(int);
+        }
+
+        public void ExportConfiguration(Stream destination, ExportOptions options = (ExportOptions)(-1))
+        {
+
         }
 
         public void BeginProfiling(object forContext)
@@ -153,6 +165,9 @@ namespace Serilog.Sinks.Redis.List
         public bool IsConnected { get; }
         public bool IncludeDetailInExceptions { get; set; }
         public int StormLogThreshold { get; set; }
+
+        public bool IsConnecting => throw new NotImplementedException();
+
         public event EventHandler<RedisErrorEventArgs> ErrorMessage;
         public event EventHandler<ConnectionFailedEventArgs> ConnectionFailed;
         public event EventHandler<InternalErrorEventArgs> InternalError;

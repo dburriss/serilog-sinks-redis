@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using Serilog.Events;
+﻿using Serilog.Events;
 using Serilog.Formatting.Compact;
 using Serilog.Parsing;
 using Serilog.Sinks.Redis.Core;
 using Serilog.Sinks.Redis.List;
 using StackExchange.Redis;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using Xunit;
 
 namespace Serilog.Sinks.Redis.IntegrationTests
