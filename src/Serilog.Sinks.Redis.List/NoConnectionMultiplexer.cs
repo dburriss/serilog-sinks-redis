@@ -166,7 +166,7 @@ namespace Serilog.Sinks.Redis.List
         public bool IncludeDetailInExceptions { get; set; }
         public int StormLogThreshold { get; set; }
 
-        public bool IsConnecting => throw new NotImplementedException();
+        public bool IsConnecting { get; }
 
         public event EventHandler<RedisErrorEventArgs> ErrorMessage;
         public event EventHandler<ConnectionFailedEventArgs> ConnectionFailed;
