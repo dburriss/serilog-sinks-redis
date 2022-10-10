@@ -102,6 +102,11 @@ namespace Serilog.Sinks.Redis.List
             return null;
         }
 
+        public IServer[] GetServers()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<bool> ConfigureAsync(TextWriter log = null)
         {
             return new Task<bool>(() => false);
@@ -175,5 +180,9 @@ namespace Serilog.Sinks.Redis.List
         public event EventHandler<EndPointEventArgs> ConfigurationChanged;
         public event EventHandler<EndPointEventArgs> ConfigurationChangedBroadcast;
         public event EventHandler<HashSlotMovedEventArgs> HashSlotMoved;
+        public ValueTask DisposeAsync()
+        {
+            return new ValueTask();
+        }
     }
 }
