@@ -4,7 +4,7 @@
     <Description>Serilog Redis sinks that logs to a Redis List type</Description>
     <AssemblyTitle>Serilog Redis List Sinks</AssemblyTitle>
     <VersionPrefix>2.0.0</VersionPrefix>
-    <Authors>Devon Burriss</Authors>
+    <Authors>Architecture Team</Authors>
     <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
     <AssemblyName>Serilog.Sinks.Redis.List</AssemblyName>
     <PackageId>Serilog.Sinks.Redis.List</PackageId>
@@ -15,6 +15,8 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <Version>1.5.0</Version>
+    <Company>Habitatsoft</Company>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,9 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Serilog.Formatting.Compact" Version="1.1.0" />
+    <PackageReference Include="Serilog.Formatting.Compact" Version="2.0.0" />
     <PackageReference Include="Serilog.Sinks.PeriodicBatching" Version="3.1.0" />
-    <PackageReference Include="StackExchange.Redis" Version="2.6.66" />
+    <PackageReference Include="StackExchange.Redis" Version="2.7.4" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">

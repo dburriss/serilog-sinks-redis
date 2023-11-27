@@ -1,4 +1,5 @@
 ﻿using StackExchange.Redis;
+using StackExchange.Redis.Maintenance;
 using StackExchange.Redis.Profiling;
 using System;
 using System.IO;
@@ -180,6 +181,8 @@ namespace Serilog.Sinks.Redis.List
         public event EventHandler<EndPointEventArgs> ConfigurationChanged;
         public event EventHandler<EndPointEventArgs> ConfigurationChangedBroadcast;
         public event EventHandler<HashSlotMovedEventArgs> HashSlotMoved;
+        public event EventHandler<ServerMaintenanceEvent> ServerMaintenanceEvent;
+
         public ValueTask DisposeAsync()
         {
             return new ValueTask();
