@@ -4,7 +4,7 @@
     <Description>Serilog Redis sinks that logs to a Redis List type</Description>
     <AssemblyTitle>Serilog Redis List Sinks</AssemblyTitle>
     <VersionPrefix>2.0.0</VersionPrefix>
-    <Authors>Architecture Team</Authors>
+    <Authors>Devon Burriss and Contributors</Authors>
     <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
     <AssemblyName>Serilog.Sinks.Redis.List</AssemblyName>
     <PackageId>Serilog.Sinks.Redis.List</PackageId>
@@ -16,7 +16,6 @@
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <Version>1.5.0</Version>
-    <Company>Habitatsoft</Company>
   </PropertyGroup>
 
   <ItemGroup>
